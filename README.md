@@ -1,0 +1,2 @@
+# Ford-Maverick-Advertising-Wrap-Design-for-Construction-Brand-Marketing
+I have completed a professional Ford Maverick advertising wrap designed to elevate brand presence and support marketing goals through strong visual storytelling. The project integrates branding, and marketing strategy to create a clean yet impactful vehicle wrap that communicates services clearly while maintaining a premium commercial look. 
