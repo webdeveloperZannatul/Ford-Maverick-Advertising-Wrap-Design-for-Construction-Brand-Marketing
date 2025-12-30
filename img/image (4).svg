@@ -1,0 +1,25 @@
+<svg class="vehicle-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Hood -->
+                            <path d="M 100 120 L 300 120 L 280 80 L 120 80 Z" fill="#2A2A2A"></path>
+                            
+                            <!-- Grill Area -->
+                            <rect x="150" y="120" width="100" height="50" fill="#1E3A5F"></rect>
+                            
+                            <!-- Logo -->
+                            <rect x="175" y="130" width="50" height="30" fill="#FFFFFF" rx="3"></rect>
+                            <text x="200" y="150" text-anchor="middle" fill="#1E3A5F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">AMTRA</text>
+                            
+                            <!-- Headlights -->
+                            <rect x="110" y="135" width="30" height="20" fill="#4A90E2" opacity="0.5" rx="5"></rect>
+                            <rect x="260" y="135" width="30" height="20" fill="#4A90E2" opacity="0.5" rx="5"></rect>
+                            
+                            <!-- Bumper -->
+                            <rect x="100" y="170" width="200" height="20" fill="#1A1A1A"></rect>
+                            
+                            <!-- Website -->
+                            <text x="200" y="185" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="8">www.amtraconstruction.com</text>
+                            
+                            <!-- Geometric Lines -->
+                            <line x1="120" y1="90" x2="280" y2="90" stroke="#1E3A5F" stroke-width="1"></line>
+                            <line x1="130" y1="100" x2="270" y2="100" stroke="#1E3A5F" stroke-width="1"></line>
+                        </svg>

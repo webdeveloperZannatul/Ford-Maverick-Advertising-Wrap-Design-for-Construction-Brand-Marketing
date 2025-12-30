@@ -1,0 +1,32 @@
+<svg class="vehicle-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Tailgate -->
+                            <rect x="100" y="80" width="200" height="90" fill="#2A2A2A" rx="5"></rect>
+                            
+                            <!-- White Accent Band -->
+                            <rect x="100" y="130" width="200" height="40" fill="#FFFFFF"></rect>
+                            
+                            <!-- Logo Area -->
+                            <rect x="150" y="90" width="100" height="35" fill="#1E3A5F" rx="3"></rect>
+                            <text x="200" y="113" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14" font-weight="bold">AMTRA</text>
+                            
+                            <!-- Title -->
+                            <text x="200" y="145" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="8">Commercial General Contractor</text>
+                            
+                            <!-- Contact Info -->
+                            <text x="200" y="160" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="9" font-weight="bold">918-XXX-XXXX</text>
+                            <text x="200" y="172" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">www.amtraconstruction.com</text>
+                            
+                            <!-- Taillights -->
+                            <rect x="90" y="100" width="10" height="30" fill="#FF0000" opacity="0.7" rx="2"></rect>
+                            <rect x="300" y="100" width="10" height="30" fill="#FF0000" opacity="0.7" rx="2"></rect>
+                            
+                            <!-- Bumper -->
+                            <rect x="80" y="170" width="240" height="15" fill="#1A1A1A"></rect>
+                            
+                            <!-- License Plate Area -->
+                            <rect x="170" y="175" width="60" height="10" fill="#C0C0C0"></rect>
+                            
+                            <!-- Geometric Elements -->
+                            <line x1="120" y1="80" x2="120" y2="130" stroke="#1E3A5F" stroke-width="2"></line>
+                            <line x1="280" y1="80" x2="280" y2="130" stroke="#1E3A5F" stroke-width="2"></line>
+                        </svg>

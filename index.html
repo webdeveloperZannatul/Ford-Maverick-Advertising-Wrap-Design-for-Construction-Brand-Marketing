@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMTRA Construction - Commercial General Contractor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-charcoal: #2A2A2A;
+            --deep-blue: #1E3A5F;
+            --clean-white: #FFFFFF;
+            --light-silver: #C0C0C0;
+            --accent-gold: #D4AF37;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            color: var(--primary-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(42, 42, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--clean-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--deep-blue);
+            border-radius: 50%;
+        }
+
+        .logo-icon::after {
+            content: 'A';
+            position: relative;
+            z-index: 1;
+            color: var(--clean-white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            color: var(--clean-white);
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar-menu a {
+            color: var(--clean-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-menu a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--accent-gold);
+        }
+
+        .navbar-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .call-btn, .quote-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .call-btn {
+            background: transparent;
+            color: var(--clean-white);
+            border: 1px solid var(--clean-white);
+        }
+
+        .call-btn:hover {
+            background: var(--clean-white);
+            color: var(--primary-charcoal);
+        }
+
+        .quote-btn {
+            background: var(--accent-gold);
+            color: var(--primary-charcoal);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .quote-btn:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--clean-white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Enhanced Header */
+        header {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(42, 42, 42, 0.2), rgba(30, 58, 95, 0.2)), 
+                        url('https://picsum.photos/seed/commercial-construction-building/1920/1080.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(42, 42, 42, 0.8) 0%, rgba(30, 58, 95, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--clean-white);
+            max-width: 1200px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--light-silver);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .header-cta a {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .primary-cta {
+            background: var(--accent-gold);
+            color: var(--primary-charcoal);
+        }
+
+        .primary-cta:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: var(--clean-white);
+            border: 2px solid var(--clean-white);
+        }
+
+        .secondary-cta:hover {
+            background: var(--clean-white);
+            color: var(--primary-charcoal);
+            transform: translateY(-3px);
+        }
+
+        .vehicle-preview {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: slideUp 1.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .vehicle-preview svg {
+            width: 300px;
+            height: 150px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--clean-white);
+            opacity: 0.7;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: var(--clean-white);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--deep-blue);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-charcoal);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--deep-blue);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 1.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #bfc2d9;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--deep-blue);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--deep-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--clean-white);
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-charcoal);
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--clean-white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-charcoal);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--deep-blue);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .about-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 25px;
+            color: #666;
+        }
+
+        .about-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--deep-blue);
+            font-weight: bold;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: var(--clean-white);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            background: var(--clean-white);
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-charcoal);
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 10px;
+        }
+
+        /* Vehicle Showcase Section */
+        .vehicle-showcase {
+            background: var(--clean-white);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .vehicle-mockups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mockup-container {
+            position: relative;
+            background: #f8f8f8;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mockup-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .mockup-view {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, #e0e0e0 0%, #f5f5f5 100%);
+        }
+
+        .vehicle-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .view-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary-charcoal);
+            color: var(--clean-white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-charcoal);
+            color: var(--clean-white);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--deep-blue), var(--accent-gold), var(--deep-blue));
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--clean-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .footer-logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--deep-blue);
+            border-radius: 50%;
+        }
+
+        .footer-logo-icon::after {
+            content: 'A';
+            position: relative;
+            z-index: 1;
+            color: var(--clean-white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .footer-logo-text {
+            color: var(--clean-white);
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-column p {
+            color: var(--light-silver);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--light-silver);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-column ul li a i {
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: var(--light-silver);
+        }
+
+        .contact-info i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--clean-white);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-gold);
+            color: var(--primary-charcoal);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--light-silver);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--primary-charcoal);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 2rem 0;
+            }
+
+            .navbar-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-content p {
+                font-size: 1.2rem;
+            }
+
+            .vehicle-mockups {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <div><img style="width: 100px; height: 80px;" src="https://i.postimg.cc/1zq0cCWK/logo1-removebg-preview.png"></div>
+                <!-- <div class="logo-icon"></div>
+                <div class="logo-text">AMTRA</div> -->
+            </div>
+            
+            <ul class="navbar-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <a href="tel:918-XXX-XXXX" class="call-btn">Call Now</a>
+                <a href="#quote" class="quote-btn">Get a Quote</a>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Header -->
+    <header id="home">
+        <div class="header-content">
+            <h1>AMTRA CONSTRUCTION</h1>
+            <p>Commercial General Contractor Specializing in Remodels, Build-outs, and Ground-up Construction</p>
+            
+            <div class="header-cta">
+                <a href="#projects" class="primary-cta">View Our Work</a>
+                <a href="#quote" class="secondary-cta">Request a Quote</a>
+            </div>
+        </div>
+        
+        <div class="vehicle-preview">
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Vehicle Body -->
+                <path d="M 20 100 L 280 100 L 270 60 L 30 60 Z" fill="#2A2A2A"/>
+                <path d="M 280 100 L 290 105 L 290 135 L 270 130 Z" fill="#1A1A1A"/>
+                
+                <!-- Side Windows -->
+                <path d="M 40 65 L 180 65 L 175 85 L 45 85 Z" fill="#4A90E2" opacity="0.3"/>
+                
+                <!-- Front -->
+                <path d="M 280 100 L 290 105 L 290 125 L 280 120 Z" fill="#1E3A5F"/>
+                
+                <!-- Logo on Door -->
+                <rect x="60" y="90" width="50" height="20" fill="#1E3A5F" rx="2"/>
+                <text x="85" y="103" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="8" font-weight="bold">AMTRA</text>
+                
+                <!-- White Accent -->
+                <rect x="30" y="110" width="240" height="20" fill="#FFFFFF"/>
+                
+                <!-- Wheels -->
+                <ellipse cx="70" cy="130" rx="15" ry="8" fill="#1A1A1A"/>
+                <ellipse cx="230" cy="130" rx="15" ry="8" fill="#1A1A1A"/>
+            </svg>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" transform="rotate(90 12 12)"/>
+            </svg>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>AMTRA Construction offers comprehensive commercial construction services tailored to meet your specific needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Ground-up Construction</h3>
+                    <p>Complete construction services from foundation to finishing, delivering high-quality commercial buildings that meet your specifications and exceed expectations.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Commercial Remodels</h3>
+                    <p>Transform your existing commercial space with our expert remodeling services, enhancing functionality, aesthetics, and value.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📐</div>
+                    <h3>Build-outs</h3>
+                    <p>Specialized interior build-outs for retail, office, and industrial spaces, optimized for your business operations and customer experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <h2>About AMTRA Construction</h2>
+                <p>With over 15 years of experience in commercial construction, AMTRA Construction has established itself as a trusted partner for businesses throughout the region. Our commitment to quality, craftsmanship, and client satisfaction sets us apart in the industry.</p>
+                
+                <ul>
+                    <li>Licensed and insured commercial general contractor</li>
+                    <li>Expert team of skilled professionals</li>
+                    <li>Proven track record of successful projects</li>
+                    <li>Commitment to timelines and budgets</li>
+                    <li>Focus on safety and quality standards</li>
+                </ul>
+                
+                <p>From initial concept to final completion, we work closely with our clients to ensure their vision becomes reality. Our comprehensive approach combines innovative solutions with traditional construction methods to deliver exceptional results.</p>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://i.postimg.cc/RVtnY61h/wrap-passenger-side-Be-J5blf-W.jpg" alt="AMTRA Construction Team">
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="section-header">
+                <h2>Recent Projects</h2>
+                <p>Explore our portfolio of completed commercial construction projects</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://i.postimg.cc/fyr1pWd8/wrap-tailgate-r-HS7j0v-P.jpg" alt="Office Building Project">
+                    </div>
+                    <div class="project-content">
+                        <h3>Downtown Office Complex</h3>
+                        <p>Complete ground-up construction of a 50,000 sq ft office building with modern amenities and sustainable features.</p>
+                        <a href="#" class="project-link">View Project Details →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://i.postimg.cc/nhLQTRLq/wrap-hero-Du-NHhqd-D.jpg" alt="Retail Store Renovation">
+                    </div>
+                    <div class="project-content">
+                        <h3>Retail Store Renovation</h3>
+                        <p>Complete interior remodel of a flagship retail location, enhancing customer experience and operational efficiency.</p>
+                        <a href="#" class="project-link">View Project Details →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://i.postimg.cc/QMdw8WqF/wrap-driver-side-D7f-Cl-Qgp.jpg" alt="Warehouse Construction">
+                    </div>
+                    <div class="project-content">
+                        <h3>Industrial Warehouse Facility</h3>
+                        <p>Ground-up construction of a 75,000 sq ft distribution center with specialized loading and storage systems.</p>
+                        <a href="#" class="project-link">View Project Details →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vehicle Showcase Section -->
+        <section class="vehicle-showcase">
+            <div class="section-header">
+                <h2>Vehicle Wrap Design</h2>
+                <p>Professional design for maximum brand impact on the road</p>
+            </div>
+
+            <div class="vehicle-mockups">
+                <!-- Driver Side View -->
+                <div class="mockup-container" data-view="side" onclick="openModal('driver-side')">
+                    <div class="view-label">DRIVER SIDE</div>
+                    <div class="mockup-view">
+                        <svg class="vehicle-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Vehicle Body -->
+                            <rect x="20" y="80" width="360" height="90" fill="#2A2A2A" rx="5"/>
+                            
+                            <!-- White Accent Band -->
+                            <rect x="20" y="130" width="360" height="40" fill="#FFFFFF"/>
+                            
+                            <!-- Geometric Pattern -->
+                            <line x1="20" y1="80" x2="100" y2="80" stroke="#1E3A5F" stroke-width="2"/>
+                            <line x1="300" y1="80" x2="380" y2="80" stroke="#1E3A5F" stroke-width="2"/>
+                            
+                            <!-- Windows -->
+                            <rect x="60" y="85" width="80" height="35" fill="#4A90E2" opacity="0.3" rx="3"/>
+                            <rect x="150" y="85" width="100" height="35" fill="#4A90E2" opacity="0.3" rx="3"/>
+                            <rect x="260" y="85" width="80" height="35" fill="#4A90E2" opacity="0.3" rx="3"/>
+                            
+                            <!-- Logo Area -->
+                            <rect x="80" y="135" width="80" height="30" fill="#1E3A5F" rx="3"/>
+                            <text x="120" y="155" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14" font-weight="bold">AMTRA</text>
+                            
+                            <!-- Text -->
+                            <text x="120" y="175" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="8">Commercial General Contractor</text>
+                            
+                            <!-- Services -->
+                            <text x="280" y="145" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">• Remodels</text>
+                            <text x="280" y="155" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">• Build-outs</text>
+                            <text x="280" y="165" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">• Ground-up</text>
+                            
+                            <!-- Contact Info -->
+                            <text x="200" y="165" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">918-XXX-XXXX</text>
+                            <text x="200" y="175" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">www.amtraconstruction.com</text>
+                            
+                            <!-- Wheels -->
+                            <circle cx="80" cy="170" r="15" fill="#1A1A1A"/>
+                            <circle cx="320" cy="170" r="15" fill="#1A1A1A"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Passenger Side View -->
+                <div class="mockup-container" data-view="side" onclick="openModal('passenger-side')">
+                    <div class="view-label">PASSENGER SIDE</div>
+                    <div class="mockup-view">
+                        <svg class="vehicle-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Vehicle Body -->
+                            <rect x="20" y="80" width="360" height="90" fill="#2A2A2A" rx="5"/>
+                            
+                            <!-- White Accent Band -->
+                            <rect x="20" y="130" width="360" height="40" fill="#FFFFFF"/>
+                            
+                            <!-- Geometric Pattern -->
+                            <line x1="20" y1="80" x2="100" y2="80" stroke="#1E3A5F" stroke-width="2"/>
+                            <line x1="300" y1="80" x2="380" y2="80" stroke="#1E3A5F" stroke-width="2"/>
+                            
+                            <!-- Windows -->
+                            <rect x="60" y="85" width="80" height="35" fill="#4A90E2" opacity="0.3" rx="3"/>
+                            <rect x="150" y="85" width="100" height="35" fill="#4A90E2" opacity="0.3" rx="3"/>
+                            <rect x="260" y="85" width="80" height="35" fill="#4A90E2" opacity="0.3" rx="3"/>
+                            
+                            <!-- Logo Area -->
+                            <rect x="240" y="135" width="80" height="30" fill="#1E3A5F" rx="3"/>
+                            <text x="280" y="155" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14" font-weight="bold">AMTRA</text>
+                            
+                            <!-- Text -->
+                            <text x="280" y="175" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="8">Commercial General Contractor</text>
+                            
+                            <!-- Services -->
+                            <text x="40" y="145" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">• Remodels</text>
+                            <text x="40" y="155" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">• Build-outs</text>
+                            <text x="40" y="165" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">• Ground-up</text>
+                            
+                            <!-- Contact Info -->
+                            <text x="200" y="165" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">918-XXX-XXXX</text>
+                            <text x="200" y="175" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">www.amtraconstruction.com</text>
+                            
+                            <!-- Wheels -->
+                            <circle cx="80" cy="170" r="15" fill="#1A1A1A"/>
+                            <circle cx="320" cy="170" r="15" fill="#1A1A1A"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Front View -->
+                <div class="mockup-container" data-view="front" onclick="openModal('front-view')">
+                    <div class="view-label">FRONT VIEW</div>
+                    <div class="mockup-view">
+                        <svg class="vehicle-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Hood -->
+                            <path d="M 100 120 L 300 120 L 280 80 L 120 80 Z" fill="#2A2A2A"/>
+                            
+                            <!-- Grill Area -->
+                            <rect x="150" y="120" width="100" height="50" fill="#1E3A5F"/>
+                            
+                            <!-- Logo -->
+                            <rect x="175" y="130" width="50" height="30" fill="#FFFFFF" rx="3"/>
+                            <text x="200" y="150" text-anchor="middle" fill="#1E3A5F" font-family="Arial, sans-serif" font-size="12" font-weight="bold">AMTRA</text>
+                            
+                            <!-- Headlights -->
+                            <rect x="110" y="135" width="30" height="20" fill="#4A90E2" opacity="0.5" rx="5"/>
+                            <rect x="260" y="135" width="30" height="20" fill="#4A90E2" opacity="0.5" rx="5"/>
+                            
+                            <!-- Bumper -->
+                            <rect x="100" y="170" width="200" height="20" fill="#1A1A1A"/>
+                            
+                            <!-- Website -->
+                            <text x="200" y="185" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="8">www.amtraconstruction.com</text>
+                            
+                            <!-- Geometric Lines -->
+                            <line x1="120" y1="90" x2="280" y2="90" stroke="#1E3A5F" stroke-width="1"/>
+                            <line x1="130" y1="100" x2="270" y2="100" stroke="#1E3A5F" stroke-width="1"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Rear View -->
+                <div class="mockup-container" data-view="rear" onclick="openModal('rear-view')">
+                    <div class="view-label">REAR VIEW</div>
+                    <div class="mockup-view">
+                        <svg class="vehicle-svg" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Tailgate -->
+                            <rect x="100" y="80" width="200" height="90" fill="#2A2A2A" rx="5"/>
+                            
+                            <!-- White Accent Band -->
+                            <rect x="100" y="130" width="200" height="40" fill="#FFFFFF"/>
+                            
+                            <!-- Logo Area -->
+                            <rect x="150" y="90" width="100" height="35" fill="#1E3A5F" rx="3"/>
+                            <text x="200" y="113" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14" font-weight="bold">AMTRA</text>
+                            
+                            <!-- Title -->
+                            <text x="200" y="145" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="8">Commercial General Contractor</text>
+                            
+                            <!-- Contact Info -->
+                            <text x="200" y="160" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="9" font-weight="bold">918-XXX-XXXX</text>
+                            <text x="200" y="172" text-anchor="middle" fill="#2A2A2A" font-family="Arial, sans-serif" font-size="7">www.amtraconstruction.com</text>
+                            
+                            <!-- Taillights -->
+                            <rect x="90" y="100" width="10" height="30" fill="#FF0000" opacity="0.7" rx="2"/>
+                            <rect x="300" y="100" width="10" height="30" fill="#FF0000" opacity="0.7" rx="2"/>
+                            
+                            <!-- Bumper -->
+                            <rect x="80" y="170" width="240" height="15" fill="#1A1A1A"/>
+                            
+                            <!-- License Plate Area -->
+                            <rect x="170" y="175" width="60" height="10" fill="#C0C0C0"/>
+                            
+                            <!-- Geometric Elements -->
+                            <line x1="120" y1="80" x2="120" y2="130" stroke="#1E3A5F" stroke-width="2"/>
+                            <line x1="280" y1="80" x2="280" y2="130" stroke="#1E3A5F" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    
+                <div><img style="width: 100px; height: 80px;" src="https://i.postimg.cc/1zq0cCWK/logo1-removebg-preview.png"></div>
+                </div>
+                <p>AMTRA Construction is a leading commercial general contractor specializing in remodels, build-outs, and ground-up construction projects. With over 15 years of experience, we deliver quality craftsmanship and exceptional results.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i>→</i> Home</a></li>
+                    <li><a href="#services"><i>→</i> Our Services</a></li>
+                    <li><a href="#about"><i>→</i> About Us</a></li>
+                    <li><a href="#projects"><i>→</i> Recent Projects</a></li>
+                    <li><a href="#contact"><i>→</i> Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#"><i>→</i> Ground-up Construction</a></li>
+                    <li><a href="#"><i>→</i> Commercial Remodels</a></li>
+                    <li><a href="#"><i>→</i> Build-outs</a></li>
+                    <li><a href="#"><i>→</i> Project Management</a></li>
+                    <li><a href="#"><i>→</i> Design-Build Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    1234 Construction Blvd, Suite 500<br>
+                    Tulsa, OK 74103
+                </div>
+                <div class="contact-info">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <a href="tel:918-XXX-XXXX">918-XXX-XXXX</a>
+                </div>
+                <div class="contact-info">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <a href="mailto:info@amtraconstruction.com">info@amtraconstruction.com</a>
+                </div>
+                <div class="contact-info">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    Licensed & Insured<br>
+                    Bonded Contractor
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 AMTRA Construction. All Rights Reserved.
+            Commercial General Contractor | Tulsa, Oklahoma</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.navbar-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.navbar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Modal functionality
+        function openModal(viewType) {
+            // In a real implementation, this would open a modal with detailed view
+            console.log(`Opening modal for ${viewType} view`);
+        }
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(42, 42, 42, 0.98)';
+                navbar.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
+            } else {
+                navbar.style.background = 'rgba(42, 42, 42, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

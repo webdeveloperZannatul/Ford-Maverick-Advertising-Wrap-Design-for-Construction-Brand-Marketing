@@ -1,0 +1,22 @@
+<svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Vehicle Body -->
+                <path d="M 20 100 L 280 100 L 270 60 L 30 60 Z" fill="#2A2A2A"></path>
+                <path d="M 280 100 L 290 105 L 290 135 L 270 130 Z" fill="#1A1A1A"></path>
+                
+                <!-- Side Windows -->
+                <path d="M 40 65 L 180 65 L 175 85 L 45 85 Z" fill="#4A90E2" opacity="0.3"></path>
+                
+                <!-- Front -->
+                <path d="M 280 100 L 290 105 L 290 125 L 280 120 Z" fill="#1E3A5F"></path>
+                
+                <!-- Logo on Door -->
+                <rect x="60" y="90" width="50" height="20" fill="#1E3A5F" rx="2"></rect>
+                <text x="85" y="103" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="8" font-weight="bold">AMTRA</text>
+                
+                <!-- White Accent -->
+                <rect x="30" y="110" width="240" height="20" fill="#FFFFFF"></rect>
+                
+                <!-- Wheels -->
+                <ellipse cx="70" cy="130" rx="15" ry="8" fill="#1A1A1A"></ellipse>
+                <ellipse cx="230" cy="130" rx="15" ry="8" fill="#1A1A1A"></ellipse>
+            </svg>
